@@ -118,9 +118,9 @@
         
         #title-block p {
             font-family: 'Inter', sans-serif;
-            font-size: .45rem;
-            letter-spacing: .22em;
-            color: rgba(255, 255, 255, .28);
+            font-size: .58rem;
+            letter-spacing: .18em;
+            color: rgba(255, 255, 255, .32);
             opacity: 1;
             margin-top: 6px;
             font-weight: 300
@@ -170,9 +170,9 @@
         }
         
         #sim-label {
-            font-size: .4rem;
-            letter-spacing: .2em;
-            color: rgba(255, 255, 255, .12);
+            font-size: .52rem;
+            letter-spacing: .18em;
+            color: rgba(255, 255, 255, .28);
             margin-top: 3px;
             font-weight: 300
         }
@@ -242,16 +242,20 @@
             top: 12px;
             right: 14px;
             cursor: pointer;
-            font-size: .6rem;
-            letter-spacing: .12em;
-            color: rgba(255, 255, 255, .18);
+            font-size: .58rem;
+            letter-spacing: .1em;
+            color: rgba(255, 255, 255, .3);
             pointer-events: all;
-            transition: color .2s;
-            font-weight: 300
+            transition: color .2s, border-color .2s;
+            font-weight: 300;
+            padding: 3px 8px;
+            border: 1px solid rgba(255, 255, 255, .12);
+            border-radius: 4px
         }
         
         #pp-close:hover {
-            color: rgba(255, 120, 120, .7)
+            color: rgba(255, 120, 120, .85);
+            border-color: rgba(255, 120, 120, .3)
         }
         
         #pp-moons-list {
@@ -378,7 +382,7 @@
         
         #speed-slider {
             -webkit-appearance: none;
-            width: 100px;
+            width: 160px;
             height: 1px;
             background: rgba(255, 255, 255, .1);
             outline: none;
@@ -452,15 +456,15 @@
             background: rgba(255, 255, 255, .06);
             border: 1px solid rgba(255, 255, 255, .1);
             backdrop-filter: blur(12px);
-            padding: 5px 12px;
-            font-size: .44rem;
+            padding: 8px 14px;
+            font-size: .52rem;
             font-weight: 300;
             letter-spacing: .12em;
             color: rgba(255, 255, 255, .7);
             opacity: 0;
             transition: opacity .2s;
             white-space: nowrap;
-            border-radius: 6px
+            border-radius: 8px
         }
         /* focus ring */
         
