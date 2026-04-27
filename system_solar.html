@@ -183,11 +183,11 @@
             right: 32px;
             top: 50%;
             transform: translateY(-50%) translateX(18px);
-            width: 230px;
+            width: 300px;
             background: rgba(255, 255, 255, .05);
             border: 1px solid rgba(255, 255, 255, .09);
             backdrop-filter: blur(24px) saturate(1.2);
-            padding: 22px 20px 18px;
+            padding: 22px 22px 18px;
             pointer-events: all;
             opacity: 0;
             transition: opacity .35s, transform .35s;
@@ -209,7 +209,7 @@
         }
         
         #pp-desc {
-            font-size: .48rem;
+            font-size: .68rem;
             line-height: 1.8;
             color: rgba(255, 255, 255, .3);
             margin-bottom: 14px;
@@ -220,10 +220,10 @@
         .stat {
             display: flex;
             justify-content: space-between;
-            font-size: .48rem;
+            font-size: .68rem;
             letter-spacing: .06em;
             color: rgba(255, 255, 255, .28);
-            padding: 5px 0;
+            padding: 6px 0;
             border-bottom: 1px solid rgba(255, 255, 255, .05);
             font-weight: 300
         }
@@ -233,8 +233,8 @@
         }
         
         .stat span:last-child {
-            color: rgba(255, 255, 255, .55);
-            font-size: .48rem
+            color: rgba(255, 255, 255, .65);
+            font-size: .68rem
         }
         
         #pp-close {
@@ -242,7 +242,7 @@
             top: 12px;
             right: 14px;
             cursor: pointer;
-            font-size: .44rem;
+            font-size: .6rem;
             letter-spacing: .12em;
             color: rgba(255, 255, 255, .18);
             pointer-events: all;
@@ -256,7 +256,7 @@
         
         #pp-moons-list {
             margin-top: 8px;
-            font-size: .44rem;
+            font-size: .62rem;
             color: rgba(255, 255, 255, .2);
             letter-spacing: .07em;
             line-height: 1.9;
@@ -276,25 +276,26 @@
         }
         
         .pl-item {
-            font-size: .44rem;
+            font-size: .65rem;
             font-weight: 300;
             letter-spacing: .2em;
             cursor: pointer;
             transition: color .2s, opacity .2s;
-            padding: 4px 0;
+            padding: 5px 0;
             display: flex;
             align-items: center;
             gap: 8px;
-            opacity: .5
+            opacity: .55
         }
         
         .pl-item::before {
             content: '';
-            width: 3px;
-            height: 3px;
+            width: 5px;
+            height: 5px;
             border-radius: 50%;
             background: currentColor;
-            opacity: .6;
+            box-shadow: 0 0 6px currentColor;
+            opacity: .8;
             flex-shrink: 0
         }
         
@@ -326,7 +327,7 @@
         }
         
         #bottom-bar span {
-            font-size: .42rem;
+            font-size: .6rem;
             font-weight: 300;
             letter-spacing: .14em;
             color: rgba(255, 255, 255, .2)
@@ -341,9 +342,9 @@
             border: 1px solid rgba(255, 255, 255, .08);
             border-radius: 4px;
             padding: 2px 6px;
-            font-size: .4rem;
+            font-size: .58rem;
             letter-spacing: .08em;
-            color: rgba(255, 255, 255, .25);
+            color: rgba(255, 255, 255, .35);
             font-weight: 400
         }
         /* speed */
@@ -360,10 +361,10 @@
         }
         
         #speed-block label {
-            font-size: .42rem;
+            font-size: .6rem;
             font-weight: 300;
             letter-spacing: .2em;
-            color: rgba(255, 255, 255, .18)
+            color: rgba(255, 255, 255, .22)
         }
         
         #speed-val {
@@ -406,10 +407,10 @@
             backdrop-filter: blur(12px);
             padding: 7px 14px;
             border-radius: 100px;
-            font-size: .42rem;
+            font-size: .6rem;
             font-weight: 300;
             letter-spacing: .16em;
-            color: rgba(255, 255, 255, .22);
+            color: rgba(255, 255, 255, .28);
             transition: color .2s, border-color .2s;
             display: flex;
             align-items: center;
@@ -610,8 +611,8 @@
             <p>VISÃO HELIOCÊNTRICA · TEMPO SIMULADO</p>
         </div>
         <div id="time-display">
-            <div id="sim-date">2025</div>
-            <div id="sim-label">ANO SIMULADO</div>
+            <div id="sim-date">01 JAN 2025</div>
+            <div id="sim-label">DATA SIMULADA</div>
         </div>
         <div id="planet-list"></div>
         <div id="planet-panel">
@@ -776,8 +777,10 @@
         // ── Tooltip ──────────────────────────────────────────────
         const ttEl = document.getElementById('tooltip');
 
-        function showTT(t, x, y) {
-            ttEl.textContent = t;
+        function showTT(t, x, y, extra) {
+            ttEl.innerHTML = extra
+                ? `<span style="display:block;font-size:.6rem;letter-spacing:.1em;color:rgba(255,255,255,.75);margin-bottom:2px">${t}</span><span style="font-size:.52rem;color:rgba(255,255,255,.35);letter-spacing:.05em">${extra}</span>`
+                : t;
             ttEl.style.left = (x + 18) + 'px';
             ttEl.style.top = (y - 10) + 'px';
             ttEl.style.opacity = '1'
@@ -1875,7 +1878,11 @@
             const hex = '#' + pd.color.toString(16).padStart(6, '0');
             li.style.color = hex;
             li.addEventListener('click', () => focusPlanet(p, li));
-            li.addEventListener('mouseenter', e => showTT(pd.name, e.clientX, e.clientY));
+            li.addEventListener('mouseenter', e => {
+                const moons = pd.info.moons;
+                const extra = moons === '0' ? pd.desc.split('.')[0] : `${moons} lua${moons === '1' ? '' : 's'}`;
+                showTT(pd.name, e.clientX, e.clientY, extra);
+            });
             li.addEventListener('mouseleave', hideTT);
             document.getElementById('planet-list').appendChild(li);
             p.navEl = li;
@@ -2154,7 +2161,11 @@
             if (hit) {
                 const h = ray.intersectObjects(planets.map(p => p.mesh), false)[0];
                 const p = m2p.get(h.object);
-                if (p) showTT(p.data.name, e.clientX, e.clientY)
+                if (p) {
+                        const moons = p.data.info.moons;
+                        const extra = moons === '0' ? p.data.desc.split('.')[0] : `${moons} lua${moons === '1' ? '' : 's'}`;
+                        showTT(p.data.name, e.clientX, e.clientY, extra)
+                    }
             } else hideTT();
         });
 
@@ -2168,6 +2179,7 @@
         // ── Sim date ─────────────────────────────────────────────
         let simYear = 2025,
             simDays = 0;
+        const MONTHS = ['JAN','FEV','MAR','ABR','MAI','JUN','JUL','AGO','SET','OUT','NOV','DEZ'];
 
         function updateDate(dt) {
             simDays += dt * speedMult * 60;
@@ -2175,7 +2187,11 @@
                 simDays -= 365;
                 simYear++
             }
-            document.getElementById('sim-date').textContent = simYear;
+            const dayOfYear = Math.floor(simDays);
+            const month = Math.floor(dayOfYear / 30.44);
+            const day = Math.floor(dayOfYear % 30.44) + 1;
+            const mIdx = Math.min(month, 11);
+            document.getElementById('sim-date').textContent = `${String(day).padStart(2,'0')} ${MONTHS[mIdx]} ${simYear}`;
         }
 
         // ── Loading ──────────────────────────────────────────────
