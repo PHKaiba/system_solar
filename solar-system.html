@@ -662,12 +662,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
         'use strict';
-        // ═══════════════════════════════════════════════════════
-        //  SISTEMA SOLAR IMERSIVO v3
-        //  + Audio Web API   + Bloom canvas   + Vento solar
-        //  + Luas nomeadas   + Cometa Halley  + Plutão
-        //  + Auroras Terra   + Atmosfera real
-        // ═══════════════════════════════════════════════════════
 
         // ── Renderer ────────────────────────────────────────────
         const c3d = document.getElementById('c3d');
@@ -685,13 +679,13 @@
         const camera = new THREE.PerspectiveCamera(55, innerWidth / innerHeight, 0.05, 9000);
         camera.position.set(0, 130, 300);
 
-        // ── Bloom canvas (simple additive glow pass) ────────────
+        // ── Bloom canvas ────────────
         const bloomC = document.getElementById('bloom-canvas');
         bloomC.width = innerWidth;
         bloomC.height = innerHeight;
         const bloomCtx = bloomC.getContext('2d');
 
-        // ── Wind canvas (solar wind particles) ──────────────────
+        // ── Wind canvas ──────────────────
         const windC = document.getElementById('wind-canvas');
         windC.width = innerWidth;
         windC.height = innerHeight;
@@ -825,9 +819,8 @@
             windC.height = innerHeight;
         });
 
-        // ══════════════════════════════════════════════════════════
         //  WEB AUDIO ENGINE
-        // ══════════════════════════════════════════════════════════
+
         let audioCtx = null,
             masterGain = null,
             audioOn = false;
@@ -968,9 +961,7 @@
             }
         });
 
-        // ══════════════════════════════════════════════════════════
         //  PROCEDURAL TEXTURES
-        // ══════════════════════════════════════════════════════════
         function mkTex(fn, sz = 512) {
             const c = document.createElement('canvas');
             c.width = c.height = sz;
