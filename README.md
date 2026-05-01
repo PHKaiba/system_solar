@@ -18,6 +18,10 @@
 
 > *Visão heliocêntrica · Tempo simulado · 9 planetas + Plutão*
 
+<br/>
+
+**[▶ Acessar o projeto](https://phkaiba.github.io/system_solar/system_solar.html)**
+
 </div>
 
 ---
@@ -61,8 +65,7 @@ git clone https://github.com/PHKaiba/system_solar.git
 # Entre na pasta
 cd system_solar
 
-# Abra o index.html no navegador
-# (recomendado usar Live Server no VS Code)
+# Abra no navegador via Live Server (VS Code)
 ```
 
 ---
@@ -71,7 +74,7 @@ cd system_solar
 
 ```
 system_solar/
-├── index.html
+├── system_solar.html
 ├── style.css
 ├── main.js
 └── assets/
