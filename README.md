@@ -122,5 +122,5 @@ Acesse a simulação em produção:
 ---
 
 <div align="center">
-  <sub>Desenvolvido com 🚀 por Pedro Henrique &nbsp;·&nbsp; São Paulo, BR</sub>
+  <sub>Desenvolvido por Pedro Dorta &nbsp;·&nbsp; São Paulo, BR</sub>
 </div>
