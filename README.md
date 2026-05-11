@@ -1,6 +1,4 @@
-<div align="center">
-  <img src="./assets/print1.jpeg" width="100%" alt="Sistema Solar 3D — Preview"/>
-</div>
+
 
 <br/>
 
@@ -9,6 +7,10 @@
 # 🪐 SISTEMA SOLAR
 
 **Visualização 3D interativa do sistema solar — construída com Three.js**
+
+<div align="center">
+  <img src="./assets/print1.jpeg" width="100%" alt="Sistema Solar 3D — Preview"/>
+</div>
 
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
 &nbsp;
